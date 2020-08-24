@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "license": "ISC",
@@ -23,8 +23,9 @@
     "eslint-plugin-react": "^7.20.6",
     "git-commit-msg-linter": "^2.4.4",
     "husky": "^4.2.5",
+    "jest": "^26.4.2",
     "lint-staged": "^10.2.11",
     "ts-jest": "^26.2.0",
-    "typescript": "^4.0.2"
+    "typescript": "4"
   }
 }
