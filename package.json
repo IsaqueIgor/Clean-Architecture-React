@@ -1,6 +1,6 @@
 {
   "name": "clean-react",
-  "author": "Isaque Igor",
+  "author": "",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,6 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "git-commit-msg-linter": "^2.4.4"
+  }
 }
