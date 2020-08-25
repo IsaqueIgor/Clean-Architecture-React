@@ -7,7 +7,7 @@
   "extends": ["plugin:react/recommended", "airbnb"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig-eslint.json"
   },
   "plugins": ["react"],
   "rules": {
@@ -19,6 +19,17 @@
     "@typescript-eslint/no-namespace": "off",
     "no-redeclare": "off",
     "import/export": "off",
+    "comma-dangle": [
+      1,
+      {
+        "objects": "always",
+        "arrays": "ignore",
+        "imports": "ignore",
+        "exports": "ignore",
+        "functions": "ignore"
+      }
+    ],
+    "no-comma-dangle": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
     "no-empty-function": "off",
@@ -41,7 +52,7 @@
       "typescript": {}
     },
     "react": {
-      "version": "detect"
+      "version": "latest"
     }
   }
 }
