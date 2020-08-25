@@ -5,9 +5,9 @@
     "jest": true
   },
   "extends": ["plugin:react/recommended", "airbnb"],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig-eslint.json"
+    "project": "./tsconfig.json"
   },
   "plugins": ["react"],
   "rules": {
@@ -19,7 +19,11 @@
     "@typescript-eslint/no-namespace": "off",
     "no-redeclare": "off",
     "import/export": "off",
-    "react/jsx-uses-react": "error",
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+    "no-empty-function": "off",
+    "no-useless-constructor": "off",
+    "no-unused-vars": "off",
     "react/jsx-uses-vars": "error",
     "import/extensions": [
       "error",
