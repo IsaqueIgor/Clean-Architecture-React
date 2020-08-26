@@ -9,7 +9,7 @@
     "rootDir": "src",
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@domain/*": ["app/domain/*"]
     },
     "allowJs": true,
     "resolveJsonModule": true
