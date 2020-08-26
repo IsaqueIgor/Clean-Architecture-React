@@ -19,6 +19,12 @@
     "@typescript-eslint/no-namespace": "off",
     "no-redeclare": "off",
     "import/export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.test.ts", "**/*.spec.ts"]
+      }
+    ],
     "comma-dangle": [
       1,
       {
