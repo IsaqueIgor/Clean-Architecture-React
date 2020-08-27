@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/IsaqueIgor/Clean-Architecture-React.svg?branch=master)](https://travis-ci.org/isaqueigor/clean-react)
 [![Coverage Status](https://coveralls.io/repos/github/IsaqueIgor/Clean-Architecture-React/badge.svg?branch=master)](https://coveralls.io/github/isaqueigor/clean-react?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/IsaqueIgor/Clean-Architecture-React/badge.svg)](https://snyk.io/test/github/isaqueigor/clean-react)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
 # **Clean React**
 
