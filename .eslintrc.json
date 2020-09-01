@@ -44,6 +44,7 @@
     "no-useless-constructor": "off",
     "no-unused-vars": "off",
     "react/jsx-uses-vars": "error",
+    "react/jsx-uses-react": "error",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -60,7 +61,7 @@
       "typescript": {}
     },
     "react": {
-      "version": "latest"
+      "version": "detect"
     }
   }
 }
