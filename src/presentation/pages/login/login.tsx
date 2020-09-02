@@ -1,7 +1,6 @@
 import React from 'react';
 import Styles from './login-styles.scss';
-import { LoginHeader } from '@/presentation/components';
-import Spinner from '@/presentation/components/spinner/spinner';
+import { LoginHeader, Footer, Spinner } from '@/presentation/components';
 
 const Login: React.FC = () => (
   <div className={Styles.loginWrap}>
@@ -25,9 +24,7 @@ const Login: React.FC = () => (
         <span className={Styles.error}>Error</span>
       </div>
     </form>
-    <footer>
-      <h2>Login</h2>
-    </footer>
+    <Footer />
   </div>
 );
 
