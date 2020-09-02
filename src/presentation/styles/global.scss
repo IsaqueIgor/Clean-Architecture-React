@@ -20,6 +20,9 @@ input[type='text'] {
   border: none;
   outline: none;
   border-radius: 18px;
+  -moz-appearance: textfield;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 input::placeholder {
