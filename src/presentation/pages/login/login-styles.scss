@@ -32,26 +32,6 @@
       text-transform: uppercase;
     }
 
-    .inputWrap {
-      margin-top: 16px;
-      display: flex;
-      position: relative;
-      align-items: center;
-
-      input {
-        flex-grow: 1;
-        border-radius: 12px;
-        padding: 8px;
-      }
-
-      .status {
-        position: absolute;
-        right: 8px;
-        font-size: 12px;
-        cursor: help;
-      }
-    }
-
     .submit {
       margin-top: 32px;
     }
@@ -65,24 +45,5 @@
         text-decoration: underline;
       }
     }
-    .errorWrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .spinner {
-        margin-top: 30px;
-      }
-
-      .error {
-        margin-top: 30px;
-        color: $invalid;
-      }
-    }
-  }
-
-  .footer {
-    background-color: $primary;
-    height: 48px;
   }
 }
