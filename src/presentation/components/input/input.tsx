@@ -10,7 +10,7 @@ type Props = React.DetailedHTMLProps<
 const Input: React.FC<Props> = (props: Props) => {
   return (
     <div className={Styles.inputWrap}>
-      <input {...props} className={Styles.input} />
+      <input {...props} className={Styles.input} autoComplete='off' />
       <label data-testid={`${props.name}-label`} className={Styles.inputLabel}>
         {props.placeholder}
       </label>
