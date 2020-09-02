@@ -3,12 +3,11 @@
 .headerWrap {
   display: flex;
   flex-direction: column;
-  border-top: 40px solid $primary;
   background-color: $primary;
   align-items: center;
 
   img {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   h1 {

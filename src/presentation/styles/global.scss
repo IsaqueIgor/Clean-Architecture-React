@@ -1,5 +1,7 @@
 @import '../styles/colors.scss';
 
+$transition: 300ms ease-in-out;
+
 * {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -17,20 +19,30 @@ input[type='email'],
 input[type='text'] {
   border: none;
   outline: none;
+  border-radius: 18px;
+}
+
+input::placeholder {
+  color: #c0c0c0;
 }
 
 button {
-  background-color: $primary;
-  line-height: 50px;
-  color: $white;
-  border-radius: 8px;
-  font-size: 16px;
+  background: $secundary;
   border: none;
-  padding: 0px 16px;
-  outline: none;
+  text-decoration: none;
+  color: $white;
+  display: inline-block;
+  border-radius: 12px;
+  min-height: 42px;
+  width: 100%;
+  transition: var(--transition) filter, var(--transition) box-shadow,
+    var(--transition) transform;
 
   &:hover {
-    opacity: 0.9;
+    filter: brightness(1.1);
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 1rem rgba(99, 225, 217, 0.15);
   }
 
   &:disabled {

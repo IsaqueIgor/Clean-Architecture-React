@@ -2,6 +2,7 @@
 
 .loginWrap {
   display: flex;
+  position: relative;
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
@@ -14,7 +15,15 @@
     padding: 40px;
     border-radius: 8px;
     align-self: center;
-    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    box-shadow: 0.5rem 0.5rem 0.8rem rgba(0, 0, 0, 0.25);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    max-width: 86.3rem;
 
     h2 {
       color: $gray;
@@ -23,13 +32,32 @@
       text-transform: uppercase;
     }
 
-    button {
+    .inputWrap {
+      margin-top: 16px;
+      display: flex;
+      position: relative;
+      align-items: center;
+
+      input {
+        flex-grow: 1;
+        border-radius: 12px;
+        padding: 8px;
+      }
+
+      .status {
+        position: absolute;
+        right: 8px;
+        font-size: 12px;
+        cursor: help;
+      }
+    }
+
+    .submit {
       margin-top: 32px;
     }
     .link {
       text-align: center;
-      color: $primary;
-      text-transform: lowercase;
+      color: $gray;
       margin-top: 16px;
       cursor: pointer;
 
@@ -37,5 +65,24 @@
         text-decoration: underline;
       }
     }
+    .errorWrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .spinner {
+        margin-top: 30px;
+      }
+
+      .error {
+        margin-top: 30px;
+        color: $invalid;
+      }
+    }
+  }
+
+  .footer {
+    background-color: $primary;
+    height: 48px;
   }
 }
