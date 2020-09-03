@@ -1,5 +1,6 @@
 node_modules
 .vscode
+.vs
 coverage
 about-this-project.md
 public/js

@@ -3,6 +3,7 @@ node_modules
 coverage
 public
 dist
+.vs
 *.json
 *.scss
 !.eslintrc.js
