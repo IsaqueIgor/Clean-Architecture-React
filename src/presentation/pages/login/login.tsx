@@ -9,15 +9,12 @@ import {
 
 import Context from '@/presentation/contexts/form/form-context';
 
-type StateProps = {
-  isLoading: boolean;
-  errorMessage: string;
-};
-
 const Login: React.FC = () => {
-  const [state] = useState<StateProps>({
+  const [state] = useState({
     isLoading: false,
     errorMessage: '',
+    emailError: 'Required Field',
+    passwordError: 'Required Field',
   });
 
   return (
@@ -26,8 +23,13 @@ const Login: React.FC = () => {
       <Context.Provider value={state}>
         <form data-testid='form' className={Styles.form}>
           <h2>Login</h2>
-          <Input type='email' name='email' placeholder='E-mail' />
-          <Input type='password' name='password' placeholder='Password' />
+          <Input required type='email' name='email' placeholder='E-mail' />
+          <Input
+            required
+            type='password'
+            name='password'
+            placeholder='Password'
+          />
 
           <button
             data-testid='submit'

@@ -21,6 +21,14 @@
   z-index: 1;
 }
 
+input:invalid {
+  border: 1px solid $invalid;
+}
+
+input:valid {
+  border: 2px solid $valid;
+}
+
 .inputLabel {
   position: absolute;
   left: 1rem;
