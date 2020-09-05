@@ -8,8 +8,8 @@ type Props = React.DetailedHTMLProps<
 >;
 
 const Input: React.FC<Props> = (props: Props) => {
-  const value = useContext(Context);
-  const error = value[`${props.name}Error`];
+  const { errorState } = useContext(Context);
+  const error = errorState[props.name];
   return (
     <div className={Styles.inputWrap}>
       <input {...props} className={Styles.input} autoComplete='off' />

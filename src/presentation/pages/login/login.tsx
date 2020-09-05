@@ -13,14 +13,17 @@ const Login: React.FC = () => {
   const [state] = useState({
     isLoading: false,
     errorMessage: '',
-    emailError: 'Required Field',
-    passwordError: 'Required Field',
   });
 
+  const [errorState] = useState({
+    emailError: 'Required Field',
+    passwordError: 'Required Field',
+    mainError: '',
+  });
   return (
     <div className={Styles.loginWrap}>
       <LoginHeader />
-      <Context.Provider value={state}>
+      <Context.Provider value={{ state, errorState }}>
         <form data-testid='form' className={Styles.form}>
           <h2>Login</h2>
           <Input required type='email' name='email' placeholder='E-mail' />
