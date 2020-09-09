@@ -9,6 +9,7 @@ type Props = React.DetailedHTMLProps<
 
 const Input: React.FC<Props> = (props: Props) => {
   const { state, setState } = useContext(Context);
+  const error = state[`${props.name}Error`];
 
   const handleChange = (event: React.FocusEvent<HTMLInputElement>): void => {
     setState({
@@ -17,6 +18,12 @@ const Input: React.FC<Props> = (props: Props) => {
     });
   };
 
+  const getStatus = (): string => {
+    return error ? '🔴' : '🟢';
+  };
+  const getTitle = (): string => {
+    return error || 'Tudo certo!';
+  };
   return (
     <div className={Styles.inputWrap}>
       <input
@@ -26,9 +33,16 @@ const Input: React.FC<Props> = (props: Props) => {
         autoComplete='off'
         onChange={handleChange}
       />
-      <label data-testid={`${props.name}-label`} className={Styles.inputLabel}>
+      <span
+        data-testid={`${props.name}-status`}
+        title={getTitle()}
+        className={Styles.status}
+      >
+        {getStatus()}
+      </span>
+      {/* <label data-testid={`${props.name}-label`} className={Styles.inputLabel}>
         {props.placeholder}
-      </label>
+      </label> */}
     </div>
   );
 };
