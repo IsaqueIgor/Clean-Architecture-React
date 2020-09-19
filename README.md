@@ -1,9 +1,10 @@
-[![Build Status](https://travis-ci.org/IsaqueIgor/Clean-Architecture-React.svg?branch=master)](https://travis-ci.org/isaqueigor/clean-react)
-[![Coverage Status](https://coveralls.io/repos/github/IsaqueIgor/Clean-Architecture-React/badge.svg?branch=master)](https://coveralls.io/github/isaqueigor/clean-react?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/IsaqueIgor/Clean-Architecture-React/badge.svg)](https://snyk.io/test/github/isaqueigor/clean-react)
+<h1 align="center">
+    Clean React
+</h1>
 
+<p align="center">
  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/IsaqueIgor/Clean-Architecture-React.svg">
-# **Clean React**
+</p>
 
 ## Principles
 
