@@ -2,6 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/IsaqueIgor/Clean-Architecture-React/badge.svg?branch=master)](https://coveralls.io/github/isaqueigor/clean-react?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/IsaqueIgor/Clean-Architecture-React/badge.svg)](https://snyk.io/test/github/isaqueigor/clean-react)
 
+ <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/IsaqueIgor/Clean-Architecture-React.svg">
 # **Clean React**
 
 ## Principles
