@@ -4,3 +4,4 @@ node_modules
 coverage
 about-this-project.md
 public/js
+dist
