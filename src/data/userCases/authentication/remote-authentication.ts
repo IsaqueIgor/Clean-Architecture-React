@@ -9,7 +9,7 @@ export class RemoteAuthentication implements Authentication {
     private readonly httpPostClient: HttpPostClient<
       AuthenticationParams,
       AccountModel
-    >
+    >,
   ) {}
 
   async auth(params: AuthenticationParams): Promise<AccountModel> {

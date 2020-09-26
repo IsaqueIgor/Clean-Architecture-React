@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+
 import Context from '@/presentation/contexts/form/form-context';
+
 import Styles from './input-styles.scss';
 
 type Props = React.DetailedHTMLProps<
@@ -18,19 +20,15 @@ const Input: React.FC<Props> = (props: Props) => {
     });
   };
 
-  const getStatus = (): string => {
-    return error ? '🔴' : '✔';
-  };
-  const getTitle = (): string => {
-    return error || 'Tudo certo!';
-  };
+  const getStatus = (): string => (error ? '🔴' : '✔');
+  const getTitle = (): string => error || 'Tudo certo!';
   return (
     <div className={Styles.inputWrap}>
       <input
         {...props}
         data-testid={props.name}
         className={Styles.input}
-        autoComplete='off'
+        autoComplete="off"
         onChange={handleChange}
       />
       <span

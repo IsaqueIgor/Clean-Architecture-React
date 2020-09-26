@@ -1,74 +1,98 @@
 {
-  "settings": {
-    "react": {
-      "version": "latest"
-    },
-    "import/resolver": {
-      "typescript": {}
-    }
-  },
   "env": {
-    "es6": true,
     "browser": true,
-    "node": true,
+    "es6": true,
     "jest": true
   },
-  "root": true,
-  "extends": ["airbnb-base", "plugin:@typescript-eslint/recommended"],
-  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig-eslint.json"
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "import-helpers"],
   "rules": {
-    "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "no-unused-expressions": "off",
-    "import/no-duplicates": "off",
-    "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/comma-spacing": "off",
-    "@typescript-eslint/return-await": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "no-redeclare": "off",
-    "import/export": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true,
-        "optionalDependencies": false,
-        "peerDependencies": false
-      }
-    ],
-    "comma-dangle": [
+    "react/jsx-filename-extension": [
       1,
       {
-        "objects": "always",
-        "arrays": "ignore",
-        "imports": "ignore",
-        "exports": "ignore",
-        "functions": "ignore"
+        "extensions": [".tsx"]
       }
     ],
-    "no-comma-dangle": "off",
     "import/prefer-default-export": "off",
-    "import/no-default-export": "error",
-    "no-empty-function": "off",
+    "import/no-duplicates": "off",
     "no-useless-constructor": "off",
-    "no-unused-vars": "off",
-    "react/jsx-uses-vars": "error",
-    "react/jsx-uses-react": "error",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-use-before-define": "off",
+    "consistent-return": "off",
+    "no-plusplus": "warn",
+    "no-shadow": "off",
+    "class-methods-use-this": "off",
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ],
+    "react/destructuring-assignment": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "import/no-extraneous-dependencies": [
+      "warn",
+      {
+        "devDependencies": ["**/*.spec.tsx", "**/*.spec.ts"]
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "js": "never",
-        "jsx": "never",
         "ts": "never",
         "tsx": "never"
       }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react$/",
+          "module",
+          ["parent", "sibling", "index", "/^@shared/skylab/"],
+          ["/^~/"]
+        ],
+        "alphabetize": {
+          "order": "ignore",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
     ]
   },
-  "react": {
-    "version": "detect"
+  "settings": {
+    "import/resolver": {
+      "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+    }
   }
 }

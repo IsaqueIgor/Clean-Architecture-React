@@ -1,16 +1,15 @@
 import React from 'react';
 
-import Styles from './header-styles.scss';
 import { Logo } from '@/presentation/components';
 
-const Header: React.FC = () => {
-  return (
-    <header className={Styles.headerWrap}>
-      <div className={Styles.headerContent}>
-        <Logo />
-      </div>
-    </header>
-  );
-};
+import Styles from './header-styles.scss';
+
+const Header: React.FC = () => (
+  <header className={Styles.headerWrap}>
+    <div className={Styles.headerContent}>
+      <Logo />
+    </div>
+  </header>
+);
 
 export default Header;

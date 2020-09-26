@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
+
 import { Link, useHistory } from 'react-router-dom';
-
-import Styles from './login-styles.scss';
-
 import {
   LoginHeader,
   Footer,
@@ -12,6 +10,8 @@ import {
 import Context from '@/presentation/contexts/form/form-context';
 import { Validation } from '@/presentation/protocols/validation';
 import { Authentication } from '@/domain/userCases';
+
+import Styles from './login-styles.scss';
 
 type Props = {
   validation: Validation;
@@ -38,7 +38,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
   }, [state.email, state.password]);
 
   const handleSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
+    event: React.FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     event.preventDefault();
     try {
@@ -62,23 +62,23 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       <LoginHeader />
       <Context.Provider value={{ state, setState }}>
         <form
-          data-testid='form'
+          data-testid="form"
           onSubmit={handleSubmit}
           className={Styles.form}
         >
           <h2>Login</h2>
-          <Input type='email' name='email' placeholder='Email' />
-          <Input type='password' name='password' placeholder='Password' />
+          <Input type="email" name="email" placeholder="Email" />
+          <Input type="password" name="password" placeholder="Password" />
 
           <button
-            data-testid='submit'
+            data-testid="submit"
             disabled={!!state.emailError || !!state.passwordError}
             className={Styles.submit}
-            type='submit'
+            type="submit"
           >
             Sign in
           </button>
-          <Link data-testid='signup' to='/signup' className={Styles.link}>
+          <Link data-testid="signup" to="/signup" className={Styles.link}>
             Create Account
           </Link>
           <FormStatus />

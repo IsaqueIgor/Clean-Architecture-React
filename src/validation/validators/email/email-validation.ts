@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { FieldValidation } from '@/validation/protocols/field-validation';
 import { InvalidFieldError } from '@/validation/errors';
 

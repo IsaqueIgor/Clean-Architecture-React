@@ -8,7 +8,7 @@ import {
 export class ValidationBuilder {
   private constructor(
     private readonly fieldName: string,
-    private readonly validations: FieldValidation[]
+    private readonly validations: FieldValidation[],
   ) {}
 
   static field(fieldName: string): ValidationBuilder {

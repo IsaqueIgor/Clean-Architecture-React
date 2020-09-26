@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 import axios, { AxiosResponse } from 'axios';
-
 import {
   HttpPostParams,
   HttpResponse,

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import faker from 'faker';
@@ -10,7 +11,6 @@ import {
   waitFor,
   cleanup,
 } from '@testing-library/react';
-
 import { Login } from '@/presentation/pages';
 import { ValidationStub, AuthenticationSpy } from '@/presentation/test';
 import { InvalidCredentialsError } from '@/domain/errors';
@@ -33,7 +33,7 @@ const makeSut = (params?: SutParams): SutTypes => {
   const sut = render(
     <Router history={history}>
       <Login validation={validationStub} authentication={authenticationSpy} />
-    </Router>
+    </Router>,
   );
   return {
     sut,
@@ -44,7 +44,7 @@ const makeSut = (params?: SutParams): SutTypes => {
 const simulateValidSubmit = async (
   sut: RenderResult,
   email = faker.internet.email(),
-  password = faker.internet.password()
+  password = faker.internet.password(),
 ): Promise<void> => {
   populateEmailField(sut, email);
   populatePasswordField(sut, password);
@@ -55,7 +55,7 @@ const simulateValidSubmit = async (
 
 const populateEmailField = (
   sut: RenderResult,
-  email = faker.internet.email()
+  email = faker.internet.email(),
 ): void => {
   const emailInput = sut.getByTestId('email');
   fireEvent.input(emailInput, {
@@ -65,7 +65,7 @@ const populateEmailField = (
 
 const populatePasswordField = (
   sut: RenderResult,
-  password = faker.internet.password()
+  password = faker.internet.password(),
 ): void => {
   const passwordInput = sut.getByTestId('password');
   fireEvent.input(passwordInput, {
@@ -81,7 +81,7 @@ const testElementExist = (sut: RenderResult, fieldName: string): void => {
 const testButtonIsDisabled = (
   sut: RenderResult,
   fieldName: string,
-  isDisabled: boolean
+  isDisabled: boolean,
 ): void => {
   const submitButton = sut.getByTestId(fieldName) as HTMLButtonElement;
   expect(submitButton.disabled).toBe(isDisabled);
@@ -90,7 +90,7 @@ const testButtonIsDisabled = (
 const testElementText = (
   sut: RenderResult,
   fieldName: string,
-  text: string
+  text: string,
 ): void => {
   const mainError = sut.getByTestId(fieldName);
   expect(mainError.textContent).toBe(text);
@@ -99,7 +99,7 @@ const testElementText = (
 const testStatusForField = (
   sut: RenderResult,
   fieldName: string,
-  validationError?: string
+  validationError?: string,
 ): void => {
   const emailStatus = sut.getByTestId(`${fieldName}-status`);
   expect(emailStatus.title).toBe(validationError || 'Tudo certo!');
@@ -200,7 +200,7 @@ describe('Login Component', () => {
     await simulateValidSubmit(sut);
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'accessToken',
-      authenticationSpy.account.accessToken
+      authenticationSpy.account.accessToken,
     );
     expect(history.length).toBe(1);
     expect(history.location.pathname).toBe('/');
