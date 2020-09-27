@@ -4,6 +4,7 @@
 
 <p align="center">
  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/IsaqueIgor/Clean-Architecture-React.svg">
+ <img alt="Build" src="https://travis-ci.com/IsaqueIgor/Clean-Architecture-React.svg?branch=master">
 </p>
 
 ## Principles
