@@ -5,6 +5,7 @@
 <p align="center">
  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/IsaqueIgor/Clean-Architecture-React.svg">
  <img alt="Build" src="https://travis-ci.com/IsaqueIgor/Clean-Architecture-React.svg?branch=master">
+ <img alt='Coverage Status' src='https://coveralls.io/repos/github/IsaqueIgor/Clean-Architecture-React/badge.svg?branch=master'  />
 </p>
 
 ## Principles
