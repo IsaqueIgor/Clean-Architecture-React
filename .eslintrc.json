@@ -42,6 +42,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-use-before-define": "off",
     "consistent-return": "off",
+    "comma-dangle": "off",
     "no-plusplus": "warn",
     "no-shadow": "off",
     "class-methods-use-this": "off",
