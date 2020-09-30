@@ -9,16 +9,21 @@ import {
 } from '@/presentation/components';
 import Context from '@/presentation/contexts/form/form-context';
 import { Validation } from '@/presentation/protocols/validation';
-import { Authentication } from '@/domain/userCases';
+import { Authentication, SaveAcessToken } from '@/domain/userCases';
 
 import Styles from './login-styles.scss';
 
 type Props = {
   validation: Validation;
   authentication: Authentication;
+  saveAccessToken: SaveAcessToken;
 };
 
-const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
+const Login: React.FC<Props> = ({
+  validation,
+  authentication,
+  saveAccessToken,
+}: Props) => {
   const history = useHistory();
   const [state, setState] = useState({
     isLoading: false,
@@ -50,7 +55,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
         email: state.email,
         password: state.password,
       });
-      localStorage.setItem('accessToken', account.accessToken);
+      await saveAccessToken.save(account.accessToken);
       history.replace('/');
     } catch (err) {
       setState({ ...state, isLoading: false, mainError: err.message });
