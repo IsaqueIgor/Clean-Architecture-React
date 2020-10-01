@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { HttpPostClientSpy } from '@/data/test/mock-http-client';
+import { HttpPostClientSpy } from '@/data/test';
 import { HttpStatusCode } from '@/data/protocols/http';
 import { mockAuthentication, mockAccountModel } from '@/domain/test';
 import { UnexpectedError, InvalidCredentialsError } from '@/domain/errors';
