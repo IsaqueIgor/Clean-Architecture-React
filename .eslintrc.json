@@ -46,6 +46,7 @@
     "comma-dangle": "off",
     "no-plusplus": "warn",
     "no-shadow": "off",
+    "operator-linebreak": "off",
     "class-methods-use-this": "off",
     "no-restricted-syntax": [
       "error",
