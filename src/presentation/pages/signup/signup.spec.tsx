@@ -3,7 +3,6 @@ import React from 'react';
 import faker from 'faker';
 import { render, RenderResult, cleanup } from '@testing-library/react';
 import { Helper, ValidationStub } from '@/presentation/test';
-import { populateField } from '@/presentation/test/form-helper';
 
 import SignUp from './signup';
 
@@ -41,28 +40,52 @@ describe('SignUp Component', () => {
   test('Should show name error if Validation Fails', () => {
     const validationError = faker.random.words();
     const { sut } = makeSut({ validationError });
-    populateField(sut, 'name');
+    Helper.populateField(sut, 'name');
     Helper.testStatusForField(sut, 'name', validationError);
   });
 
   test('Should show email error if Validation Fails', () => {
     const validationError = faker.random.words();
     const { sut } = makeSut({ validationError });
-    populateField(sut, 'email');
+    Helper.populateField(sut, 'email');
     Helper.testStatusForField(sut, 'email', validationError);
   });
 
   test('Should show password error if Validation Fails', () => {
     const validationError = faker.random.words();
     const { sut } = makeSut({ validationError });
-    populateField(sut, 'password');
+    Helper.populateField(sut, 'password');
     Helper.testStatusForField(sut, 'password', validationError);
   });
 
   test('Should show passwordConfirmation error if Validation Fails', () => {
     const validationError = faker.random.words();
     const { sut } = makeSut({ validationError });
-    populateField(sut, 'passwordConfirmation');
+    Helper.populateField(sut, 'passwordConfirmation');
     Helper.testStatusForField(sut, 'passwordConfirmation', validationError);
+  });
+
+  test('Should show valid name state if Validation succeeds', () => {
+    const { sut } = makeSut();
+    Helper.populateField(sut, 'name');
+    Helper.testStatusForField(sut, 'name');
+  });
+
+  test('Should show valid email state if Validation succeeds', () => {
+    const { sut } = makeSut();
+    Helper.populateField(sut, 'email');
+    Helper.testStatusForField(sut, 'email');
+  });
+
+  test('Should show valid password state if Validation succeeds', () => {
+    const { sut } = makeSut();
+    Helper.populateField(sut, 'password');
+    Helper.testStatusForField(sut, 'password');
+  });
+
+  test('Should show valid passwordConfirmation state if Validation succeeds', () => {
+    const { sut } = makeSut();
+    Helper.populateField(sut, 'passwordConfirmation');
+    Helper.testStatusForField(sut, 'passwordConfirmation');
   });
 });
