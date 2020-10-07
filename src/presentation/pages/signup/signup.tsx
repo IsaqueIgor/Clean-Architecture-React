@@ -112,7 +112,14 @@ const SignUp: React.FC<Props> = ({
           >
             Sign up
           </button>
-          <span className={Styles.link}>Back to Login</span>
+          <Link
+            data-testid="login-link"
+            replace
+            to="/login"
+            className={Styles.link}
+          >
+            Back to Login
+          </Link>
           <FormStatus />
         </form>
       </Context.Provider>
