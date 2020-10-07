@@ -5,10 +5,12 @@ import {
   MinLengthValidation,
 } from '@/validation/validators';
 
+import { CompareFieldsValitation } from '../compare-fields/compate-fields-validation';
+
 export class ValidationBuilder {
   private constructor(
     private readonly fieldName: string,
-    private readonly validations: FieldValidation[],
+    private readonly validations: FieldValidation[]
   ) {}
 
   static field(fieldName: string): ValidationBuilder {
@@ -27,6 +29,11 @@ export class ValidationBuilder {
 
   min(lenght: number): ValidationBuilder {
     this.validations.push(new MinLengthValidation(this.fieldName, lenght));
+    return this;
+  }
+
+  sameAs(fieldToCompare: string): ValidationBuilder {
+    this.validations.push(new CompareFieldsValitation(this.fieldName, fieldToCompare));
     return this;
   }
 

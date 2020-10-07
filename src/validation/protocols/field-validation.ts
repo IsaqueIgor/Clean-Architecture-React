@@ -1,4 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
 export interface FieldValidation {
   field: string;
-  validate(value: string): Error;
+  validate: (input: object) => Error;
 }
