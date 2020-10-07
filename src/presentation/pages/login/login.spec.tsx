@@ -65,15 +65,6 @@ const simulateValidSubmit = async (
   await waitFor(() => form);
 };
 
-const testElementText = (
-  sut: RenderResult,
-  fieldName: string,
-  text: string
-): void => {
-  const mainError = sut.getByTestId(fieldName);
-  expect(mainError.textContent).toBe(text);
-};
-
 describe('Login Component', () => {
   afterEach(cleanup);
 
@@ -152,7 +143,7 @@ describe('Login Component', () => {
       .mockReturnValueOnce(Promise.reject(error));
     await simulateValidSubmit(sut);
     Helper.testChildCount(sut, 'error-wrap', 1);
-    testElementText(sut, 'main-error', error.message);
+    Helper.testElementText(sut, 'main-error', error.message);
   });
 
   test('Should call SaveAccessToken on success', async () => {
@@ -173,7 +164,7 @@ describe('Login Component', () => {
       .mockReturnValueOnce(Promise.reject(error));
     await simulateValidSubmit(sut);
     Helper.testChildCount(sut, 'error-wrap', 1);
-    testElementText(sut, 'main-error', error.message);
+    Helper.testElementText(sut, 'main-error', error.message);
   });
 
   test('Should navigate to signup page', async () => {
