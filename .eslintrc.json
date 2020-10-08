@@ -21,7 +21,8 @@
       "jsx": true
     },
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig-eslint.json"
   },
   "plugins": ["react", "react-hooks", "cypress", "@typescript-eslint", "import-helpers"],
   "rules": {
