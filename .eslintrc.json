@@ -2,10 +2,12 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "extends": [
     "plugin:react/recommended",
+    "plugin:cypress/recommended",
     "airbnb",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -21,7 +23,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "import-helpers"],
+  "plugins": ["react", "react-hooks", "cypress", "@typescript-eslint", "import-helpers"],
   "rules": {
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
