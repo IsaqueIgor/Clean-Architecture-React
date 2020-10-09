@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 
 import Context from '@/presentation/contexts/form/form-context';
 
@@ -21,4 +21,4 @@ const FormStatus: React.FC = () => {
   );
 };
 
-export default FormStatus;
+export default memo(FormStatus);

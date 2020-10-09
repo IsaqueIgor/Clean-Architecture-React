@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 
 import Context from '@/presentation/contexts/form/form-context';
 
@@ -16,4 +16,4 @@ const SubmitButton: React.FC<Props> = ({ text }: Props) => {
   );
 };
 
-export default SubmitButton;
+export default memo(SubmitButton);

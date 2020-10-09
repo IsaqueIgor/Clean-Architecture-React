@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 
 import Context from '@/presentation/contexts/form/form-context';
 
@@ -45,4 +45,4 @@ const Input: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default Input;
+export default memo(Input);
