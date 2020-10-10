@@ -22,7 +22,7 @@ describe('LocalSaveAccessToken', () => {
     const { sut, setStorageMock } = makeSut();
     const acessToken = faker.random.uuid();
     await sut.save(acessToken);
-    expect(setStorageMock.key).toBe('acessToken');
+    expect(setStorageMock.key).toBe('accessToken');
     expect(setStorageMock.value).toBe(acessToken);
   });
 

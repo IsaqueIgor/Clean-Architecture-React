@@ -5,6 +5,6 @@ export class LocalSaveAccessToken implements SaveAcessToken {
   constructor(private readonly setStorage: SetStorage) {}
 
   async save(accessToken: string): Promise<void> {
-    await this.setStorage.set('acessToken', accessToken);
+    await this.setStorage.set('accessToken', accessToken);
   }
 }
