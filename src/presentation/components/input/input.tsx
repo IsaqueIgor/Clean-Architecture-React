@@ -1,4 +1,7 @@
-import React, { useContext, memo } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { useContext, memo, useRef } from 'react';
 
 import Context from '@/presentation/contexts/form/form-context';
 
@@ -11,36 +14,38 @@ type Props = React.DetailedHTMLProps<
 
 const Input: React.FC<Props> = (props: Props) => {
   const { state, setState } = useContext(Context);
+  const inputRef = useRef<HTMLInputElement>();
   const error = state[`${props.name}Error`];
 
-  const handleChange = (event: React.FocusEvent<HTMLInputElement>): void => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const getStatus = (): string => (error ? '🔴' : '✔');
-  const getTitle = (): string => error || 'Tudo certo!';
   return (
     <div className={Styles.inputWrap}>
       <input
         {...props}
+        id={`${props.name}-input`}
+        ref={inputRef}
+        placeholder=" "
         data-testid={props.name}
         className={Styles.input}
         autoComplete="off"
-        onChange={handleChange}
+        onChange={(e) => {
+          setState({ ...state, [e.target.name]: e.target.value });
+        }}
       />
+      <label
+        htmlFor={`${props.name}-input`}
+        onClick={() => {
+          inputRef.current.focus();
+        }}
+      >
+        {props.placeholder}
+      </label>
       <span
         data-testid={`${props.name}-status`}
-        title={getTitle()}
+        title={error || 'Tudo certo!'}
         className={Styles.status}
       >
-        {getStatus()}
+        {error ? '🔴' : '✔'}
       </span>
-      {/* <label data-testid={`${props.name}-label`} className={Styles.inputLabel}>
-        {props.placeholder}
-      </label> */}
     </div>
   );
 };
