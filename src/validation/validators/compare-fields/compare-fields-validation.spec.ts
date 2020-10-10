@@ -4,29 +4,32 @@ import { InvalidFieldError } from '@/validation/errors';
 
 import { CompareFieldsValitation } from './compate-fields-validation';
 
-const makeSut = (field: string, valueToCompare: string): CompareFieldsValitation =>
+const makeSut = (
+  field: string,
+  valueToCompare: string
+): CompareFieldsValitation =>
   new CompareFieldsValitation(field, valueToCompare);
 
 describe('CompareFieldsValidation', () => {
   test('Should return error if compare is invalid', () => {
-    const field = faker.database.column();
-    const fieldToCompate = faker.database.column();
-    const sut = makeSut(field, fieldToCompate);
+    const field = 'any_field';
+    const fieldToCompare = 'other_field';
+    const sut = makeSut(field, fieldToCompare);
     const error = sut.validate({
-      [field]: faker.random.word(),
-      [fieldToCompate]: faker.random.word()
+      [field]: 'any_value',
+      [fieldToCompare]: 'other_value',
     });
     expect(error).toEqual(new InvalidFieldError());
   });
 
-  test('Should return falsy if compare is valid', () => {
-    const field = faker.database.column();
-    const fieldToCompate = faker.database.column();
+  test('Should return falsy if compare is svalid', () => {
+    const field = 'any_field';
+    const fieldToCompare = 'other_field';
     const value = faker.random.word();
-    const sut = makeSut(field, fieldToCompate);
+    const sut = makeSut(field, fieldToCompare);
     const error = sut.validate({
       [field]: value,
-      [fieldToCompate]: value
+      [fieldToCompare]: value,
     });
     expect(error).toBeFalsy();
   });
