@@ -2,7 +2,7 @@
   "name": "clean-react",
   "author": "Isaque igor",
   "description": "NodeJs Rest API using TDD, Clean Architecture and Typescript",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "main": "index.js",
   "scripts": {
     "start": "node index",
