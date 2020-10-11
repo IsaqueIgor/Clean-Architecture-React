@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Link, useHistory } from 'react-router-dom';
-import {
-  LoginHeader,
-  Footer,
-  Input,
-  FormStatus,
-  SubmitButton,
-} from '@/presentation/components';
+import { Input, FormStatus, SubmitButton } from '@/presentation/components';
 import Context from '@/presentation/contexts/form/form-context';
 import { Validation } from '@/presentation/protocols/validation';
 import { AddAccount, SaveAcessToken } from '@/domain/userCases';
@@ -48,12 +42,14 @@ const SignUp: React.FC<Props> = ({
       password,
       passwordConfirmation
     } = state;
+
     const formData = {
       name,
       email,
       password,
-      passwordConfirmation
+      passwordConfirmation,
     };
+
     const nameError = validation.validate('name', formData);
     const emailError = validation.validate('email', formData);
     const passwordError = validation.validate('password', formData);
@@ -100,7 +96,6 @@ const SignUp: React.FC<Props> = ({
 
   return (
     <div className={Styles.signup}>
-      <LoginHeader />
       <Context.Provider value={{ state, setState }}>
         <form
           className={Styles.form}
@@ -129,7 +124,6 @@ const SignUp: React.FC<Props> = ({
           <FormStatus />
         </form>
       </Context.Provider>
-      <Footer />
     </div>
   );
 };

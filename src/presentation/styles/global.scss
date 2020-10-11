@@ -10,6 +10,15 @@ $transition: 300ms ease-in-out;
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  height: 100%;
+
+  @media (min-width: 1981px) {
+    font-size: 80%;
+  }
+}
+
 body {
   background-color: $background;
 }
@@ -36,12 +45,11 @@ button {
   display: inline-block;
   border-radius: 12px;
   min-height: 42px;
-  width: 100%;
+  width: 80%;
   transition: var(--transition) filter, var(--transition) box-shadow,
     var(--transition) transform;
 
   &:hover {
-    filter: brightness(1.1);
     cursor: pointer;
     transform: translateY(-2px);
     box-shadow: 0 1rem 1rem rgba(99, 225, 217, 0.15);
