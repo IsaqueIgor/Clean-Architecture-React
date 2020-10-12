@@ -131,7 +131,25 @@ describe('Login', () => {
     cy.getByTestId('password').type(validCredentials.password);
     cy.getByTestId('submit').click();
     cy.getByTestId('spinner').should('not.exist');
-    cy.getByTestId('main-error').should('contain.text', 'Something went wrong. Try Again');
+    cy.getByTestId('main-error').should(
+      'contain.text',
+      'Something went wrong. Try Again'
+    );
     cy.url().should('eq', `${baseUrl}/login`);
+  });
+
+  it('Should prevent multiple submits', () => {
+    cy.route({
+      method: 'POST',
+      url: /login/,
+      status: 200,
+      response: {
+        invalidProperty: faker.random.uuid(),
+      },
+    }).as('request');
+    cy.getByTestId('email').type(validCredentials.email);
+    cy.getByTestId('password').type(validCredentials.password);
+    cy.getByTestId('submit').dblclick();
+    cy.get('@request.all').should('have.length', 1);
   });
 });
