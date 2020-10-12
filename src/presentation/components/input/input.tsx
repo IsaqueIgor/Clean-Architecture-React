@@ -18,12 +18,13 @@ const Input: React.FC<Props> = (props: Props) => {
   const error = state[`${props.name}Error`];
 
   return (
-    <div className={Styles.inputWrap}>
+    <div data-testid={`${props.name}-wrap`} className={Styles.inputWrap} data-status={error ? 'invalid' : 'valid'}>
       <input
         {...props}
         id={`${props.name}-input`}
         ref={inputRef}
         placeholder=" "
+        title={error}
         data-testid={props.name}
         className={Styles.input}
         autoComplete="off"
@@ -32,20 +33,14 @@ const Input: React.FC<Props> = (props: Props) => {
         }}
       />
       <label
-        htmlFor={`${props.name}-input`}
+        data-testid={`${props.name}-label`}
+        title={error}
         onClick={() => {
           inputRef.current.focus();
         }}
       >
         {props.placeholder}
       </label>
-      <span
-        data-testid={`${props.name}-status`}
-        title={error || 'Tudo certo!'}
-        className={Styles.status}
-      >
-        {error ? '🔴' : '✔'}
-      </span>
     </div>
   );
 };
