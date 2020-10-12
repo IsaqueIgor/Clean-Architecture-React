@@ -128,8 +128,7 @@ describe('Login', () => {
       },
     });
     cy.getByTestId('email').type(validCredentials.email);
-    cy.getByTestId('password').type(validCredentials.password);
-    cy.getByTestId('submit').click();
+    cy.getByTestId('password').type(validCredentials.password).type('{enter}');
     cy.getByTestId('spinner').should('not.exist');
     cy.getByTestId('main-error').should(
       'contain.text',
