@@ -33,3 +33,15 @@ export const mockOk = (url: RegExp, method: string, response: any): void => {
     response,
   }).as('request');
 };
+
+export const mockEmailInUseError = (url: RegExp): void => {
+  cy.server();
+  cy.route({
+    method: 'POST',
+    url,
+    status: 403,
+    response: {
+      error: faker.random.word(),
+    },
+  }).as('request');
+};
