@@ -1,7 +1,10 @@
+/* eslint-disable max-classes-per-file */
 import faker from 'faker';
 import {
   HttpPostClient,
   HttpPostParams,
+  HttGetParams,
+  HttpGetClient,
   HttpStatusCode,
   HttpResponse,
 } from '@/data/protocols/http/';
@@ -24,5 +27,13 @@ export class HttpPostClientSpy<R> implements HttpPostClient<R> {
     this.url = params.url;
     this.body = params.body;
     return Promise.resolve(this.response);
+  }
+}
+
+export class HttpGetClientSpy implements HttpGetClient {
+  url: string;
+
+  async get(params: HttGetParams): Promise<void> {
+    this.url = params.url;
   }
 }
