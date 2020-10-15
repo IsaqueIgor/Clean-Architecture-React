@@ -5,5 +5,5 @@ export type HttGetParams = {
 };
 
 export interface HttpGetClient<R = any> {
-  get(params: HttGetParams): Promise<void>;
+  get(params: HttGetParams): Promise<HttpResponse<R>>;
 }
