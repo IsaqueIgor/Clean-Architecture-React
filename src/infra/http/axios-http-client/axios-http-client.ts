@@ -8,19 +8,15 @@ import {
 
 export class AxiosHttpClient implements HttpPostClient {
   async post(params: HttpPostParams): Promise<HttpResponse> {
-    let httpResponse: AxiosResponse;
+    let axiosResponse: AxiosResponse;
     try {
-      httpResponse = await axios.post(params.url, params.body);
-      return {
-        statusCode: httpResponse.status,
-        body: httpResponse.data,
-      };
+      axiosResponse = await axios.post(params.url, params.body);
     } catch (error) {
-      httpResponse = error.response;
+      axiosResponse = error.response;
     }
     return {
-      statusCode: httpResponse.status,
-      body: httpResponse.data,
+      statusCode: axiosResponse.status,
+      body: axiosResponse.data,
     };
   }
 }
