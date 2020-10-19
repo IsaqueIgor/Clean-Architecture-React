@@ -1,0 +1,145 @@
+@import '../../styles/colors.scss';
+
+.surveyListWrap {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  .headerWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: $gray;
+
+    .headerContent {
+      max-width: 116.2rem;
+      padding: 0 1.6rem;
+      width: 100%;
+      height: 10.4rem;
+      display: flex;
+      justify-content: space-between;
+
+      .logoWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .logoutWrap {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .contentWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: center;
+    max-width: 116.2rem;
+    flex-grow: 1;
+    width: 100%;
+    padding: 4rem 1.6rem;
+
+    h2 {
+      font-size: 3.2rem;
+    }
+    h2 + span {
+      font-size: 1.6rem;
+      color: #a4aeb4;
+      margin-bottom: 2.4rem;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-self: center;
+
+      li {
+        height: 25rem;
+        background-color: $gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-basis: 48%;
+        margin-bottom: 2.4rem;
+        border-radius: 8px;
+        box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.08);
+
+        .surveyContent {
+          display: flex;
+          flex-direction: row;
+          border-radius: 8px 8px 0 0;
+          justify-content: space-between;
+          flex-grow: 1;
+          background-repeat: no-repeat;
+          background-image: linear-gradient(
+              to right,
+              rgba($primary, 0.1),
+              rgba($primary, 0.1)
+            ),
+            linear-gradient(to right, rgba($white, 0.1), rgba($white, 0.1));
+          background-position: 0 0, 54 0;
+          background-size: 54px 100%, 100% 100%;
+
+          time {
+            display: flex;
+            flex-direction: column;
+            background-color: $disabledColor;
+            color: $white;
+            border-radius: 8px;
+            margin-left: 2.4rem;
+            height: 10rem;
+            width: 6rem;
+            justify-content: center;
+            align-self: center;
+            align-items: center;
+            flex-shrink: 0;
+
+            .day {
+              font-size: 4rem;
+              font-weight: bold;
+            }
+
+            .month {
+              text-transform: lowercase;
+              margin: 0 0 5px;
+            }
+
+            .year {
+              font-size: 1.6rem;
+            }
+          }
+
+          p {
+            font-size: 1.8rem;
+            align-self: center;
+            margin: 2.4rem;
+          }
+        }
+
+        footer {
+          background-color: $primary;
+          line-height: 4rem;
+          text-align: center;
+          color: $white;
+          border-radius: 0 0 8px 8px;
+          cursor: pointer;
+
+          &:hover {
+          }
+        }
+      }
+    }
+  }
+}
