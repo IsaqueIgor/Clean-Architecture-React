@@ -4,20 +4,20 @@ import { Link, useHistory } from 'react-router-dom';
 import { Input, FormStatus, SubmitButton } from '@/presentation/components';
 import Context from '@/presentation/contexts/form/form-context';
 import { Validation } from '@/presentation/protocols/validation';
-import { AddAccount, SaveAcessToken } from '@/domain/userCases';
+import { AddAccount, UpdateCurrentAccount } from '@/domain/userCases';
 
 import Styles from './signup-styles.scss';
 
 type Props = {
   validation: Validation;
   addAccount: AddAccount;
-  saveAccessToken: SaveAcessToken;
+  updateCurrentAccount: UpdateCurrentAccount;
 };
 
 const SignUp: React.FC<Props> = ({
   validation,
   addAccount,
-  saveAccessToken,
+  updateCurrentAccount,
 }: Props) => {
   const [state, setState] = useState({
     isLoading: false,
@@ -87,7 +87,7 @@ const SignUp: React.FC<Props> = ({
         password: state.password,
         passwordConfirmation: state.passwordConfirmation,
       });
-      await saveAccessToken.save(account.accessToken);
+      await updateCurrentAccount.save(account);
       history.replace('/');
     } catch (error) {
       setState({ ...state, isLoading: false, mainError: error.message });
