@@ -21,7 +21,7 @@
       font-size: 3.2rem;
     }
     h2 + span {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: #a4aeb4;
       margin-bottom: 2.4rem;
     }
@@ -101,6 +101,7 @@
             font-size: 1.8rem;
             align-self: center;
             margin: 2.4rem;
+            flex-grow: 1;
           }
         }
 
@@ -113,6 +114,30 @@
           cursor: pointer;
 
           &:hover {
+            background-color: $background;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .surveyListWrap{
+    .contentWrap{
+      h2 + span {
+        font-size: 2.2rem;
+      }
+      ul {
+        flex-direction: column;
+
+        li {
+          flex-basis: 100%;
+
+          .surveyContent {
+            p {
+              font-size: 2.2rem;
+            }
           }
         }
       }

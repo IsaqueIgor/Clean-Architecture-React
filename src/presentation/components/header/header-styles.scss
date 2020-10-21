@@ -31,3 +31,16 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px){
+  .headerWrap {
+    .headerContent {
+    height: 8.4rem;
+    padding: 0 2.6rem;
+
+    span {
+      font-size: 2rem;
+    }
+    }
+  }
+}
