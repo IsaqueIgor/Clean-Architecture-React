@@ -7,38 +7,6 @@
   justify-content: space-between;
   min-height: 100vh;
 
-  .headerWrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: $gray;
-
-    .headerContent {
-      max-width: 116.2rem;
-      padding: 0 1.6rem;
-      width: 100%;
-      height: 10.4rem;
-      display: flex;
-      justify-content: space-between;
-
-      .logoWrap {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .logoutWrap {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        flex-direction: column;
-      }
-    }
-  }
-
   .contentWrap {
     display: flex;
     flex-direction: column;
@@ -69,6 +37,7 @@
         height: 25rem;
         background-color: $gray;
         display: flex;
+        min-width: 30rem;
         flex-direction: column;
         justify-content: space-between;
         flex-basis: 48%;

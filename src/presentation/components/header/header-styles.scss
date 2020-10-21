@@ -1,0 +1,33 @@
+@import '../../styles/colors.scss';
+
+.headerWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $gray;
+
+  .headerContent {
+    max-width: 116.2rem;
+    padding: 0 1.6rem;
+    width: 100%;
+    height: 10.4rem;
+    display: flex;
+    justify-content: space-between;
+
+    .logoWrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .logoutWrap {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      flex-direction: column;
+    }
+  }
+}
