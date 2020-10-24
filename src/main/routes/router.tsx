@@ -5,10 +5,18 @@ import { SurveyList } from '@/presentation/pages';
 import { makeLogin } from '@/main/factories/pages/login/login-factory';
 import { makeSignUp } from '@/main/factories/pages/signup/signup-factory';
 import { ApiContext } from '@/presentation/contexts';
-import { setCurrentAccountAdapter } from '@/main/adapters/current-account-adapter';
+import {
+  setCurrentAccountAdapter,
+  getCurrentAccountAdapter,
+} from '@/main/adapters/current-account-adapter';
 
 const Router: React.FC = () => (
-  <ApiContext.Provider value={{ setCurrentAccount: setCurrentAccountAdapter }}>
+  <ApiContext.Provider
+    value={{
+      setCurrentAccount: setCurrentAccountAdapter,
+      getCurrentAccount: getCurrentAccountAdapter,
+    }}
+  >
     <BrowserRouter>
       <Switch>
         <Route path="/Login" exact component={makeLogin} />
