@@ -1,61 +1,49 @@
-import { RenderResult, fireEvent } from '@testing-library/react';
+import { RenderResult, fireEvent, screen } from '@testing-library/react';
 import faker from 'faker';
 
-export const testChildCount = (
-  sut: RenderResult,
-  fieldName: string,
-  count: number
-): void => {
-  const el = sut.getByTestId(fieldName);
+export const testChildCount = (fieldName: string, count: number): void => {
+  const el = screen.getByTestId(fieldName);
   expect(el.childElementCount).toBe(count);
 };
 
 export const testButtonIsDisabled = (
-  sut: RenderResult,
   fieldName: string,
   isDisabled: boolean
 ): void => {
-  const submitButton = sut.getByTestId(fieldName) as HTMLButtonElement;
+  const submitButton = screen.getByTestId(fieldName) as HTMLButtonElement;
   expect(submitButton.disabled).toBe(isDisabled);
 };
 
 export const testStatusForField = (
-  sut: RenderResult,
   fieldName: string,
   validationError = ''
 ): void => {
-  const wrap = sut.getByTestId(`${fieldName}-wrap`);
-  const field = sut.getByTestId(fieldName);
-  const label = sut.getByTestId(`${fieldName}-label`);
-  expect(wrap.getAttribute('data-status')).toBe(validationError ? 'invalid' : 'valid');
+  const wrap = screen.getByTestId(`${fieldName}-wrap`);
+  const field = screen.getByTestId(fieldName);
+  const label = screen.getByTestId(`${fieldName}-label`);
+  expect(wrap.getAttribute('data-status')).toBe(
+    validationError ? 'invalid' : 'valid'
+  );
   expect(field.title).toBe(validationError);
   expect(label.title).toBe(validationError);
 };
 
 export const populateField = (
-  sut: RenderResult,
   fieldName: string,
   value = faker.random.word()
 ): void => {
-  const input = sut.getByTestId(fieldName);
+  const input = screen.getByTestId(fieldName);
   fireEvent.input(input, {
     target: { value },
   });
 };
 
-export const testElementExist = (
-  sut: RenderResult,
-  fieldName: string
-): void => {
-  const element = sut.getByTestId(fieldName);
+export const testElementExist = (fieldName: string): void => {
+  const element = screen.getByTestId(fieldName);
   expect(element).toBeTruthy();
 };
 
-export const testElementText = (
-  sut: RenderResult,
-  fieldName: string,
-  text: string
-): void => {
-  const mainError = sut.getByTestId(fieldName);
+export const testElementText = (fieldName: string, text: string): void => {
+  const mainError = screen.getByTestId(fieldName);
   expect(mainError.textContent).toBe(text);
 };
