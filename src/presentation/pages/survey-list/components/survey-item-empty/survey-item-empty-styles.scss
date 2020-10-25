@@ -1,0 +1,61 @@
+@import '../../../../styles/colors.scss';
+
+.surveyItemEmpty {
+  height: 25rem;
+  background-color: $gray;
+  display: flex;
+  min-width: 30rem;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 48%;
+  margin-bottom: 2.4rem;
+  border-radius: 8px;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, $skeleton, $skeleton),
+    linear-gradient(to right, $skeleton, $skeleton),
+    linear-gradient(to right, $skeleton, $skeleton),
+    linear-gradient(to right, $skeleton, $skeleton),
+    linear-gradient(to right, $skeleton, $skeleton);
+  background-position: 2.4rem 5.5rem, left 0 bottom 0, 11.8rem 7.7rem,
+    11.8rem 9.7rem, 11.8rem 11.7rem;
+  background-size: 6rem 10rem, 100% 4rem, 14rem 1.6rem, 13rem 1.6rem,
+    16rem 1.6rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      rgba($white, 0.3),
+      transparent
+    );
+    animation: shimmer 1s infinite;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .surveyItemWrap {
+    flex-basis: 100%;
+
+    .surveyContent {
+      p {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

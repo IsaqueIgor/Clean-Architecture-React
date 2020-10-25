@@ -1,0 +1,100 @@
+@import '../../../../styles/colors.scss';
+
+.surveyItemWrap {
+  height: 25rem;
+  background-color: $gray;
+  display: flex;
+  min-width: 30rem;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 48%;
+  margin-bottom: 2.4rem;
+  border-radius: 8px;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.08);
+
+  .surveyContent {
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px 8px 0 0;
+    justify-content: space-between;
+    flex-grow: 1;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(
+        to right,
+        rgba($primary, 0.1),
+        rgba($primary, 0.1)
+      ),
+      linear-gradient(to right, rgba($white, 0.1), rgba($white, 0.1));
+    background-position: 0 0, 54 0;
+    background-size: 54px 100%, 100% 100%;
+    position: relative;
+
+    .iconWrap {
+      position: absolute;
+      top: -1rem;
+      right: 0;
+    }
+
+    time {
+      display: flex;
+      flex-direction: column;
+      background-color: $disabledColor;
+      color: $white;
+      border-radius: 8px;
+      margin-left: 2.4rem;
+      height: 10rem;
+      width: 6rem;
+      justify-content: center;
+      align-self: center;
+      align-items: center;
+      flex-shrink: 0;
+
+      .day {
+        font-size: 4rem;
+        font-weight: bold;
+      }
+
+      .month {
+        text-transform: lowercase;
+        margin: 0 0 5px;
+      }
+
+      .year {
+        font-size: 1.6rem;
+      }
+    }
+
+    p {
+      font-size: 1.8rem;
+      align-self: center;
+      margin: 2.4rem;
+      flex-grow: 1;
+    }
+  }
+
+  footer {
+    background-color: $primary;
+    line-height: 4rem;
+    text-align: center;
+    color: $white;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .surveyItemWrap {
+    flex-basis: 100%;
+
+    .surveyContent {
+      p {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
+
