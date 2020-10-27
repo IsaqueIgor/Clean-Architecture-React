@@ -25,14 +25,6 @@
       color: #a4aeb4;
       margin-bottom: 2.4rem;
     }
-
-    ul {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-self: center;
-    }
   }
 }
 
@@ -41,9 +33,6 @@
     .contentWrap {
       h2 + span {
         font-size: 2.2rem;
-      }
-      ul {
-        flex-direction: column;
       }
     }
   }
