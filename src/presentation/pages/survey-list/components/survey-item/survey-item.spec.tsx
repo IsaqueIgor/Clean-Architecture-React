@@ -5,7 +5,6 @@ import { render, screen } from '@testing-library/react';
 import { mockSurveyModel } from '@/domain/test';
 import { SurveyModel } from '@/domain/models';
 import { IconName } from '@/presentation/components';
-import { Console } from 'console';
 
 const makeSut = (survey: SurveyModel): void => {
   render(<SurveyItem survey={survey} />);
