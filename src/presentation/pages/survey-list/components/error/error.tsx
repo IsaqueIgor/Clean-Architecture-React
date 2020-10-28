@@ -8,7 +8,7 @@ const Error: React.FC = () => {
   const { state, setState } = useContext(SurveyContext);
 
   const handleReload = (): void => {
-    setState({ survey: [], error: '', reload: !state.reload });
+    setState({ surveys: [], error: '', reload: !state.reload });
   };
 
   return (

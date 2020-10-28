@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { render, screen, waitFor } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent
+} from '@testing-library/react';
 import { SurveyList } from '@/presentation/pages';
 import { LoadSurveyList } from '@/domain/userCases';
 import { SurveyModel } from '@/domain/models';
@@ -63,13 +68,15 @@ describe('SurveyList Component', () => {
     expect(screen.getByTestId('error')).toHaveTextContent(error.message);
   });
 
-  // test('Should call LoadSurveyList on reload', async () => {
-  //   const loadSurveyListSpy = new LoadSurveyListSpy();
-  //   const error = new UnexpectedError();
-  //   jest.spyOn(loadSurveyListSpy, 'loadAll').mockRejectedValueOnce(error);
-  //   makeSut(loadSurveyListSpy);
-  //   await waitFor(() => screen.getByText('Surveys'));
-  //   expect(screen.queryByTestId('reload')).toBeInTheDocument();
-  //   fireEvent.click(screen.getByTestId('reload'));
-  // });
+  test('Should call LoadSurveyList on reload', async () => {
+    const loadSurveyListSpy = new LoadSurveyListSpy();
+    const error = new UnexpectedError();
+    jest.spyOn(loadSurveyListSpy, 'loadAll').mockRejectedValueOnce(error);
+    makeSut(loadSurveyListSpy);
+    await waitFor(() => screen.getByText('Surveys'));
+    expect(screen.queryByTestId('reload')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('reload'));
+    expect(loadSurveyListSpy.callsCount).toBe(1);
+    await waitFor(() => screen.getByText('Surveys'));
+  });
 });
