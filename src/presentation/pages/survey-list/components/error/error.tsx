@@ -13,6 +13,7 @@ const Error: React.FC = () => {
 
   return (
     <div className={Styles.errorWrap}>
+      <h1>Whoops!</h1>
       <span data-testid="error">{state.error}</span>
       <button data-testid="reload" type="button" onClick={handleReload}>
         Try Again

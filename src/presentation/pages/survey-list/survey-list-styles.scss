@@ -10,7 +10,7 @@
   .contentWrap {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     align-self: center;
     max-width: 116.2rem;
     flex-grow: 1;
@@ -18,9 +18,11 @@
     padding: 4rem 1.6rem;
 
     h2 {
+      align-self: flex-start;
       font-size: 3.2rem;
     }
     h2 + span {
+      align-self: flex-start;
       font-size: 1.8rem;
       color: #a4aeb4;
       margin-bottom: 2.4rem;
