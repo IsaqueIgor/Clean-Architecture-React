@@ -62,4 +62,14 @@ describe('SurveyList Component', () => {
     expect(screen.queryByTestId('survey-list')).not.toBeInTheDocument();
     expect(screen.getByTestId('error')).toHaveTextContent(error.message);
   });
+
+  // test('Should call LoadSurveyList on reload', async () => {
+  //   const loadSurveyListSpy = new LoadSurveyListSpy();
+  //   const error = new UnexpectedError();
+  //   jest.spyOn(loadSurveyListSpy, 'loadAll').mockRejectedValueOnce(error);
+  //   makeSut(loadSurveyListSpy);
+  //   await waitFor(() => screen.getByText('Surveys'));
+  //   expect(screen.queryByTestId('reload')).toBeInTheDocument();
+  //   fireEvent.click(screen.getByTestId('reload'));
+  // });
 });
