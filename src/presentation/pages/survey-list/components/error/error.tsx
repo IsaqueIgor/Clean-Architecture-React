@@ -2,13 +2,21 @@ import React, { useContext } from 'react';
 
 import { SurveyContext } from '@/presentation/pages/survey-list/components';
 
+import Styles from './error-styles.scss';
+
 const Error: React.FC = () => {
-  const { state } = useContext(SurveyContext);
+  const { state, setState } = useContext(SurveyContext);
+
+  const handleReload = (): void => {
+    setState({ survey: [], error: '', reload: !state.reload });
+  };
 
   return (
-    <div>
+    <div className={Styles.errorWrap}>
       <span data-testid="error">{state.error}</span>
-      <button type="button">Reload</button>
+      <button data-testid="reload" type="button" onClick={handleReload}>
+        Try Again
+      </button>
     </div>
   );
 };
