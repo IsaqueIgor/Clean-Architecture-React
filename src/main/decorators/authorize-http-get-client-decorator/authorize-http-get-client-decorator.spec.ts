@@ -1,11 +1,24 @@
 import { mockGetRequest, GetStorageSpy } from '@/data/test';
 import { AuthorizeHttpGetClientDecorator } from '@/main/decorators';
 
+type SutTypes = {
+  sut: AuthorizeHttpGetClientDecorator
+  getStorageSpy: GetStorageSpy
+}
+
+const makeSut = (): SutTypes => {
+  const getStorageSpy = new GetStorageSpy();
+  const sut = new AuthorizeHttpGetClientDecorator(getStorageSpy);
+  return {
+    sut,
+    getStorageSpy
+  };
+};
+
 describe('AuthorizeHttpGetClientDecorator', () => {
   test('should call GetStorage with correct value', () => {
-    const getStoregeSpy = new GetStorageSpy();
-    const sut = new AuthorizeHttpGetClientDecorator(getStoregeSpy);
+    const { sut, getStorageSpy } = makeSut();
     sut.get(mockGetRequest());
-    expect(getStoregeSpy.key).toBe('account');
+    expect(getStorageSpy.key).toBe('account');
   });
 });
