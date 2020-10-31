@@ -3,7 +3,7 @@ import faker from 'faker';
 import {
   HttpPostClient,
   HttpPostParams,
-  HttGetParams,
+  HttpGetParams,
   HttpGetClient,
   HttpStatusCode,
   HttpResponse,
@@ -14,8 +14,9 @@ export const mockPostRequest = (): HttpPostParams => ({
   body: faker.random.objectElement(),
 });
 
-export const mockGetRequest = (): HttpPostParams => ({
+export const mockGetRequest = (): HttpGetParams => ({
   url: faker.internet.url(),
+  headers: faker.random.objectElement(),
 });
 
 export class HttpPostClientSpy<R> implements HttpPostClient<R> {
@@ -41,7 +42,7 @@ export class HttpGetClientSpy<R> implements HttpGetClient<R> {
     statusCode: HttpStatusCode.ok,
   };
 
-  async get(params: HttGetParams): Promise<HttpResponse<R>> {
+  async get(params: HttpGetParams): Promise<HttpResponse<R>> {
     this.url = params.url;
     return Promise.resolve(this.response);
   }
