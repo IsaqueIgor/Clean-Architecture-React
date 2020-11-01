@@ -7,21 +7,8 @@ import {
   fireEvent
 } from '@testing-library/react';
 import { SurveyList } from '@/presentation/pages';
-import { LoadSurveyList } from '@/domain/userCases';
-import { SurveyModel } from '@/domain/models';
-import { mockSurveyListModel } from '@/domain/test';
+import { LoadSurveyListSpy } from '@/domain/test';
 import { UnexpectedError } from '@/domain/errors';
-
-class LoadSurveyListSpy implements LoadSurveyList {
-  callsCount = 0;
-
-  surveys = mockSurveyListModel();
-
-  async loadAll(): Promise<SurveyModel[]> {
-    this.callsCount += 1;
-    return this.surveys;
-  }
-}
 
 type SutTypes = {
   loadSurveyListSpy: LoadSurveyListSpy;

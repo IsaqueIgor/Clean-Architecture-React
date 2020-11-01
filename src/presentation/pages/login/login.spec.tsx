@@ -9,15 +9,16 @@ import {
   waitFor,
   screen
 } from '@testing-library/react';
-import { ValidationStub, AuthenticationSpy, Helper } from '@/presentation/test';
+import { ValidationStub, Helper } from '@/presentation/test';
 import { Login } from '@/presentation/pages';
 import { ApiContext } from '@/presentation/contexts';
 import { InvalidCredentialsError } from '@/domain/errors';
-import { AccountModel } from '@/domain/models';
+import { Authentication } from '@/domain/userCases';
+import { AuthenticationSpy } from '@/domain/test';
 
 type SutTypes = {
   authenticationSpy: AuthenticationSpy;
-  setCurrentAccountMock: (account: AccountModel) => void;
+  setCurrentAccountMock: (account: Authentication.Model) => void;
 };
 
 type SutParams = {

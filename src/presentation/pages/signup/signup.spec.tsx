@@ -9,10 +9,11 @@ import {
   screen
 } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import { Helper, ValidationStub, AddAccountSpy } from '@/presentation/test';
+import { Helper, ValidationStub } from '@/presentation/test';
 import { EmailInUseError } from '@/domain/errors';
 import { ApiContext } from '@/presentation/contexts';
-import { AccountModel } from '@/domain/models';
+import { AddAccount } from '@/domain/userCases';
+import { AddAccountSpy } from '@/domain/test';
 
 import SignUp from './signup';
 
@@ -20,7 +21,7 @@ const history = createMemoryHistory({ initialEntries: ['/signup'] });
 
 type SutTypes = {
   addAccountSpy: AddAccountSpy;
-  setCurrentAccountMock: (account: AccountModel) => void;
+  setCurrentAccountMock: (account: AddAccount.Model) => void;
 };
 
 type SutParams = {

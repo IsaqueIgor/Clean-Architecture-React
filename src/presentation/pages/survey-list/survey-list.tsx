@@ -7,7 +7,6 @@ import {
   SurveyListItem,
 } from '@/presentation/pages/survey-list/components';
 import { LoadSurveyList } from '@/domain/userCases';
-import { SurveyModel } from '@/domain/models';
 
 import Styles from './survey-list-styles.scss';
 
@@ -17,7 +16,7 @@ type Props = {
 
 const SurveyList: React.FC<Props> = ({ loadSurveyList }: Props) => {
   const [state, setState] = useState({
-    surveys: [] as SurveyModel[],
+    surveys: [] as LoadSurveyList.Model[],
     error: '',
     reload: false,
   });
