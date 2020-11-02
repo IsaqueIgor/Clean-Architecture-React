@@ -6,16 +6,19 @@ import { LoadSurveyList } from '@/domain/userCases/load-survey-list';
 export class RemoteLoadSurveyList implements LoadSurveyList {
   constructor(
     private readonly url: string,
-    private readonly httpGetClient: HttpGetClient<LoadSurveyList.Model[]>
+    private readonly httpGetClient: HttpGetClient<RemoteLoadSurveyList.Model[]>
   ) {}
 
   async loadAll(): Promise<LoadSurveyList.Model[]> {
     const httpResponse = await this.httpGetClient.get({
       url: this.url,
     });
+    const remoteSurveys = httpResponse.body || [];
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:
-        return httpResponse.body;
+        return remoteSurveys.map(
+          (remoteSurvey) => Object.assign(remoteSurvey, { date: new Date(remoteSurvey.date) })
+        );
       case HttpStatusCode.noContent:
         return [];
       default:
@@ -25,5 +28,10 @@ export class RemoteLoadSurveyList implements LoadSurveyList {
 }
 
 export namespace RemoteLoadSurveyList {
-  export type Model = LoadSurveyList.Model
+  export type Model = {
+    id: string;
+    question: string;
+    date: string;
+    didAnswer: boolean;
+  }
 }
