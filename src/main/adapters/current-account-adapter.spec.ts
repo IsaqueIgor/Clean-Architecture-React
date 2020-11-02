@@ -1,6 +1,5 @@
 import { mockAccountModel } from '@/domain/test';
 import { LocalStorageAdapter } from '@/infra/cache/local-storage-adapter';
-import { UnexpectedError } from '@/domain/errors';
 
 import {
   setCurrentAccountAdapter,
