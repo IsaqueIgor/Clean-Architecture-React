@@ -5,13 +5,13 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { ApiContext } from '@/presentation/contexts';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import { Authentication } from '@/domain/userCases';
 import { mockAccountModel } from '@/domain/test';
+import { AccountModel } from '@/domain/models';
 
 const history = createMemoryHistory({ initialEntries: ['/'] });
 
 type SutTypes = {
-  setCurrentAccountMock: (account: Authentication.Model) => void;
+  setCurrentAccountMock: (account: AccountModel) => void;
 }
 
 const makeSut = (account = mockAccountModel()): SutTypes => {
