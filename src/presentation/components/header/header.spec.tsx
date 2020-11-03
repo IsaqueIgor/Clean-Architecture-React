@@ -6,6 +6,7 @@ import { ApiContext } from '@/presentation/contexts';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { Authentication } from '@/domain/userCases';
+import { mockAccountModel } from '@/domain/test';
 
 const history = createMemoryHistory({ initialEntries: ['/'] });
 
@@ -13,10 +14,14 @@ type SutTypes = {
   setCurrentAccountMock: (account: Authentication.Model) => void;
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (account = mockAccountModel()): SutTypes => {
   const setCurrentAccountMock = jest.fn();
   render(
-    <ApiContext.Provider value={{ setCurrentAccount: setCurrentAccountMock }}>
+    <ApiContext.Provider value={{
+      setCurrentAccount: setCurrentAccountMock,
+      getCurrentAccount: () => account
+    }}
+    >
       <Router history={history}>
         <Header />
       </Router>
@@ -34,5 +39,11 @@ describe('Header Component', () => {
     fireEvent.click(screen.getByTestId('logout'));
     expect(setCurrentAccountMock).toHaveBeenCalledWith(undefined);
     expect(history.location.pathname).toBe('/login');
+  });
+
+  test('should render username correctly', () => {
+    const account = mockAccountModel();
+    makeSut(account);
+    expect(screen.getByTestId('username')).toHaveTextContent(account.name);
   });
 });
