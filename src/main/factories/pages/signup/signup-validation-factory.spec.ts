@@ -11,7 +11,7 @@ describe('LoginValidationFactory', () => {
     expect(composite).toEqual(
       ValidationComposite.build([
         new RequiredFieldValitation('name'),
-        new MinLengthValidation('name', 5),
+        new MinLengthValidation('name', 4),
         new RequiredFieldValitation('email'),
         new EmailValidation('email'),
         new RequiredFieldValitation('password'),
