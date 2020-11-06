@@ -1,6 +1,7 @@
 import faker from 'faker';
 
-import * as FormHelper from '../support/form-helper';
+import * as FormHelper from '../support/form-helpers';
+import * as Helper from '../support/helpers';
 import * as Http from '../support/login-mocks';
 
 const validCredentials = {
@@ -52,30 +53,22 @@ describe('Login', () => {
     Http.mockUnexpectedError();
     simulateValidSubmit();
     FormHelper.testMainError('Something went wrong. Try Again');
-    FormHelper.testUrl('/login');
+    Helper.testUrl('/login');
   });
 
   it('Should present invalidCredentialsError', () => {
     Http.mockInvalidCredentialsError();
     simulateValidSubmit();
     FormHelper.testMainError('Invalid Credentials');
-    FormHelper.testUrl('/login');
+    Helper.testUrl('/login');
   });
 
   it('Should present save accessToken if valid credentials are provided', () => {
     Http.mockOk();
     simulateValidSubmit();
     cy.getByTestId('error-wrap').should('not.have.descendants');
-    FormHelper.testUrl('/');
-    FormHelper.testLocalStorageItem('account');
-  });
-
-  it('Should present UnexpectedError if invalid data is returned', () => {
-    Http.mockInvalidData();
-    cy.getByTestId('email').type(validCredentials.email);
-    cy.getByTestId('password').type(validCredentials.password).type('{enter}');
-    FormHelper.testMainError('Something went wrong. Try Again');
-    FormHelper.testUrl('/login');
+    Helper.testUrl('/');
+    Helper.testLocalStorageItem('account');
   });
 
   it('Should prevent multiple submits', () => {
@@ -83,12 +76,12 @@ describe('Login', () => {
     cy.getByTestId('email').type(validCredentials.email);
     cy.getByTestId('password').type(validCredentials.password);
     cy.getByTestId('submit').dblclick();
-    FormHelper.testHttpCallsCount(1);
+    Helper.testHttpCallsCount(1);
   });
 
   it('Should not call submit if form is invalid', () => {
     Http.mockOk();
     cy.getByTestId('email').type(validCredentials.email).type('{enter}');
-    FormHelper.testHttpCallsCount(0);
+    Helper.testHttpCallsCount(0);
   });
 });

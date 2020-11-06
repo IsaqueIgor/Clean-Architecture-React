@@ -1,6 +1,7 @@
 import faker from 'faker';
 
-import * as FormHelper from '../support/form-helper';
+import * as FormHelper from '../support/form-helpers';
+import * as Helper from '../support/helpers';
 import * as Http from '../support/signup-mocks';
 
 const simulateValidSubmit = (): void => {
@@ -64,29 +65,22 @@ describe('Sign Up', () => {
     Http.mockEmailInUseError();
     simulateValidSubmit();
     FormHelper.testMainError('Email already in use');
-    FormHelper.testUrl('/signup');
+    Helper.testUrl('/signup');
   });
 
   it('Should present UnexpectedError on default error cases', () => {
     Http.mockUnexpectedError();
     simulateValidSubmit();
     FormHelper.testMainError('Something went wrong. Try Again');
-    FormHelper.testUrl('/signup');
-  });
-
-  it('Should present UnexpectedError if invalid data is returned', () => {
-    Http.mockInvalidData();
-    simulateValidSubmit();
-    FormHelper.testMainError('Something went wrong. Try Again');
-    FormHelper.testUrl('/signup');
+    Helper.testUrl('/signup');
   });
 
   it('Should present save accessToken if valid credentials are provided', () => {
     Http.mockOk();
     simulateValidSubmit();
     cy.getByTestId('error-wrap').should('not.have.descendants');
-    FormHelper.testUrl('/');
-    FormHelper.testLocalStorageItem('account');
+    Helper.testUrl('/');
+    Helper.testLocalStorageItem('account');
   });
 
   it('Should prevent multiple submits', () => {
@@ -97,12 +91,12 @@ describe('Sign Up', () => {
     cy.getByTestId('password').type(password);
     cy.getByTestId('passwordConfirmation').type(password);
     cy.getByTestId('submit').dblclick();
-    FormHelper.testHttpCallsCount(1);
+    Helper.testHttpCallsCount(1);
   });
 
   it('Should not call submit if form is invalid', () => {
     Http.mockOk();
     cy.getByTestId('email').type(faker.internet.email()).type('{enter}');
-    FormHelper.testHttpCallsCount(0);
+    Helper.testHttpCallsCount(0);
   });
 });
