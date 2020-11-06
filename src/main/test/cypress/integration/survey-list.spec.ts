@@ -2,7 +2,7 @@ import faker from 'faker';
 
 import * as FormHelper from '../support/form-helpers';
 import * as Helper from '../support/helpers';
-import * as Http from '../support/login-mocks';
+import * as Http from '../support/survey-list-mocks';
 
 const accountMock = {
   accessToken: faker.random.uuid(),
@@ -14,9 +14,15 @@ describe('Login', () => {
     Helper.setLocalStorageItem('account', accountMock);
   });
 
-  it('Should load ith correct initial state', () => {
+  it('Should present error on UnexpectedError', () => {
     Http.mockUnexpectedError();
     cy.visit('');
     cy.getByTestId('error').should('contain.text', 'Something went wrong. Try Again');
+  });
+
+  it('Should logout on AccessDeniedError', () => {
+    Http.mockAccessDeniedError();
+    cy.visit('');
+    Helper.testUrl('/login');
   });
 });
