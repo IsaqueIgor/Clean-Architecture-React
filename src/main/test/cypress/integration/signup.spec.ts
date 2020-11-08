@@ -1,8 +1,22 @@
 import faker from 'faker';
 
-import * as FormHelper from '../support/form-helpers';
-import * as Helper from '../support/helpers';
-import * as Http from '../support/signup-mocks';
+import * as FormHelper from '../utils/form-helpers';
+import * as Helper from '../utils/helpers';
+import * as Http from '../utils/http-mocks';
+
+const path = /signup/;
+
+const mockEmailInUseError = (): void => {
+  Http.mockForbiddenError(path, 'POST');
+};
+
+const mockUnexpectedError = (): void => {
+  Http.mockServerError(path, 'POST');
+};
+
+const mockSuccess = (): void => {
+  Http.mockOk(path, 'POST', 'fx:account');
+};
 
 const simulateValidSubmit = (): void => {
   cy.getByTestId('name').type(faker.name.findName());
@@ -62,21 +76,21 @@ describe('Sign Up', () => {
   });
 
   it('Should present EmailInUse on 403', () => {
-    Http.mockEmailInUseError();
+    mockEmailInUseError();
     simulateValidSubmit();
     FormHelper.testMainError('Email already in use');
     Helper.testUrl('/signup');
   });
 
   it('Should present UnexpectedError on default error cases', () => {
-    Http.mockUnexpectedError();
+    mockUnexpectedError();
     simulateValidSubmit();
     FormHelper.testMainError('Something went wrong. Try Again');
     Helper.testUrl('/signup');
   });
 
   it('Should present save accessToken if valid credentials are provided', () => {
-    Http.mockOk();
+    mockSuccess();
     simulateValidSubmit();
     cy.getByTestId('error-wrap').should('not.have.descendants');
     Helper.testUrl('/');
@@ -84,7 +98,7 @@ describe('Sign Up', () => {
   });
 
   it('Should prevent multiple submits', () => {
-    Http.mockOk();
+    mockSuccess();
     cy.getByTestId('name').type(faker.name.findName());
     cy.getByTestId('email').type(faker.internet.email());
     const password = faker.random.alphaNumeric(7);
@@ -95,7 +109,7 @@ describe('Sign Up', () => {
   });
 
   it('Should not call submit if form is invalid', () => {
-    Http.mockOk();
+    mockSuccess();
     cy.getByTestId('email').type(faker.internet.email()).type('{enter}');
     Helper.testHttpCallsCount(0);
   });

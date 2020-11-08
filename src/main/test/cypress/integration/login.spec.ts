@@ -1,12 +1,26 @@
 import faker from 'faker';
 
-import * as FormHelper from '../support/form-helpers';
-import * as Helper from '../support/helpers';
-import * as Http from '../support/login-mocks';
+import * as FormHelper from '../utils/form-helpers';
+import * as Helper from '../utils/helpers';
+import * as Http from '../utils/http-mocks';
 
 const validCredentials = {
   email: 'mango@gmail.com',
   password: '123456',
+};
+
+const path = /login/;
+
+const mockInvalidCredentialsError = (): void => {
+  Http.mockUnauthorizedError(path);
+};
+
+const mockUnexpectedError = (): void => {
+  Http.mockServerError(path, 'POST');
+};
+
+const mockSuccess = (): void => {
+  Http.mockOk(path, 'POST', 'fx:account');
 };
 
 const simulateValidSubmit = (): void => {
@@ -50,21 +64,21 @@ describe('Login', () => {
   });
 
   it('Should present UnexpectedError on default error cases', () => {
-    Http.mockUnexpectedError();
+    mockUnexpectedError();
     simulateValidSubmit();
     FormHelper.testMainError('Something went wrong. Try Again');
     Helper.testUrl('/login');
   });
 
   it('Should present invalidCredentialsError', () => {
-    Http.mockInvalidCredentialsError();
+    mockInvalidCredentialsError();
     simulateValidSubmit();
     FormHelper.testMainError('Invalid Credentials');
     Helper.testUrl('/login');
   });
 
   it('Should present save accessToken if valid credentials are provided', () => {
-    Http.mockOk();
+    mockSuccess();
     simulateValidSubmit();
     cy.getByTestId('error-wrap').should('not.have.descendants');
     Helper.testUrl('/');
@@ -72,7 +86,7 @@ describe('Login', () => {
   });
 
   it('Should prevent multiple submits', () => {
-    Http.mockOk();
+    mockSuccess();
     cy.getByTestId('email').type(validCredentials.email);
     cy.getByTestId('password').type(validCredentials.password);
     cy.getByTestId('submit').dblclick();
@@ -80,7 +94,7 @@ describe('Login', () => {
   });
 
   it('Should not call submit if form is invalid', () => {
-    Http.mockOk();
+    mockSuccess();
     cy.getByTestId('email').type(validCredentials.email).type('{enter}');
     Helper.testHttpCallsCount(0);
   });

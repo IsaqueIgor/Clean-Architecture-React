@@ -1,8 +1,4 @@
-import faker from 'faker';
-
-import * as FormHelper from '../support/form-helpers';
-import * as Helper from '../support/helpers';
-import * as Http from '../support/login-mocks';
+import * as Helper from '../utils/helpers';
 
 describe('PrivateRoutes', () => {
   it('Should logout if survey-list has no token', () => {
